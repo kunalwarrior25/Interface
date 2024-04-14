@@ -1,5 +1,6 @@
 package com.example.testingop
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,6 +10,7 @@ import com.example.testingop.month.month_modle
 
 class MainActivity : AppCompatActivity() {
     lateinit var list:RecyclerView
+    lateinit var data:ArrayList<month_modle>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         var b11 = "Febrary"
         var b12 = "January"
 
-        var data:ArrayList<month_modle> = ArrayList()
+        data = ArrayList()
         var a1 = month_modle("$b1")
         var a2 = month_modle("$b2")
         var a3 = month_modle("$b3")
@@ -57,5 +59,11 @@ class MainActivity : AppCompatActivity() {
         list.layoutManager=LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
         var adaptt=month_adapter(data)
         list.adapter=adaptt
+
+        adaptt.onItemClick = {
+            val intent = Intent(this,fragment::class.java)
+            intent.putExtra("opmonth", it)
+            startActivity(intent)
+        }
     }
 }

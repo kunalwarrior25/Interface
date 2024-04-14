@@ -9,16 +9,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.testingop.R
 
 class movie_adapter(var movie_list:ArrayList<movie_modle>):RecyclerView.Adapter<movie_adapter.ViewHolder>() {
+
+    var onItemClick:((movie_modle) -> Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): movie_adapter.ViewHolder {
         var movie=LayoutInflater.from(parent.context).inflate(R.layout.frame_movie,parent,false)
         return ViewHolder(movie)
     }
 
     override fun onBindViewHolder(holder: movie_adapter.ViewHolder, position: Int) {
+        val movie = movie_list[position]
+
         holder.movie_image.setImageResource(movie_list[position].movie_image)
         holder.movie_name.setText(movie_list[position].movie_name)
         holder.movie_date.setText(movie_list[position].movie_released_date)
         holder.movie_production.setText(movie_list[position].movie_released_by)
+
+        holder.itemView.setOnClickListener(){
+            onItemClick?.invoke(movie)
+        }
     }
 
     override fun getItemCount(): Int {

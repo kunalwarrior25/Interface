@@ -1,3 +1,27 @@
 package com.example.testingop.month
 
-data class month_modle (var month:String)
+import android.os.Parcel
+import android.os.Parcelable
+
+data class month_modle(var month: String?):Parcelable {
+    constructor(parcel: Parcel) : this(parcel.readString()) {
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(month)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<month_modle> {
+        override fun createFromParcel(parcel: Parcel): month_modle {
+            return month_modle(parcel)
+        }
+
+        override fun newArray(size: Int): Array<month_modle?> {
+            return arrayOfNulls(size)
+        }
+    }
+}

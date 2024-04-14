@@ -8,13 +8,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.testingop.R
 
 class month_adapter(var monthlist:ArrayList<month_modle>):RecyclerView.Adapter<month_adapter.ViewHolder>() {
+
+    var onItemClick:((month_modle) -> Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): month_adapter.ViewHolder {
         val monthly=LayoutInflater.from(parent.context).inflate(R.layout.month,parent,false)
         return ViewHolder(monthly)
     }
 
     override fun onBindViewHolder(holder: month_adapter.ViewHolder, position: Int) {
+        val month = monthlist[position]
         holder.month_name.setText(monthlist[position].month)
+
+        holder.itemView.setOnClickListener(){
+            onItemClick?.invoke(month)
+        }
     }
 
     override fun getItemCount(): Int {
