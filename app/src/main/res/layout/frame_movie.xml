@@ -4,6 +4,7 @@
     android:background="#534848"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:layout_margin="4dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
@@ -56,17 +57,17 @@
                 android:textColor="@color/white" />
 
             <TextView
+                android:id="@+id/movie_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/movie_name"
-                android:id="@+id/movie_date"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="105dp"
-                android:textColor="@color/white"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="0dp"
                 android:layout_marginBottom="20dp"
-                android:text="25/07/2024" />
+                android:text="25/07/2024"
+                android:textColor="@color/white" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -81,6 +82,7 @@
                 android:textColor="@color/white" />
 
             <TextView
+                android:id="@+id/movie_produce"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/movie_name"
@@ -89,7 +91,6 @@
                 android:layout_marginTop="35dp"
                 android:layout_marginEnd="0dp"
                 android:layout_marginBottom="20dp"
-                android:id="@+id/movie_produce"
                 android:text="Dharma Production"
                 android:textColor="@color/white" />
 
