@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_margin="5dp"
+        android:background="@android:color/holo_orange_light"
+        android:layout_height="99dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:id="@+id/show_name"
+            android:textStyle="bold"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/white"
+            android:text="Shree talkies"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/first_time"
+            android:layout_width="wrap_content"
+            android:background="#FA3535"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="47dp"
+            android:layout_marginTop="58dp"
+            android:padding="7dp"
+            android:text="10AM" />
+
+        <TextView
+            android:id="@+id/second_time"
+            android:layout_width="wrap_content"
+            android:padding="7dp"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:background="#49FF06"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="47dp"
+            android:layout_marginTop="58dp"
+            android:layout_toEndOf="@+id/first_time"
+            android:text="10AM" />
+
+        <TextView
+            android:id="@+id/third_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="47dp"
+            android:layout_marginTop="58dp"
+            android:layout_toEndOf="@+id/second_time"
+            android:background="#49FF06"
+            android:padding="7dp"
+            android:text="10AM"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+</LinearLayout>
