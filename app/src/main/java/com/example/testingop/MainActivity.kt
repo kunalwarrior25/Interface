@@ -3,10 +3,15 @@ package com.example.testingop
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testingop.month.month_adapter
 import com.example.testingop.month.month_modle
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
     lateinit var list:RecyclerView
@@ -14,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        list=findViewById(R.id.month_list)
+        list = findViewById(R.id.month_list)
 
         var b1 = "December"
         var b2 = "November"
@@ -56,12 +61,12 @@ class MainActivity : AppCompatActivity() {
         data.add(a11)
         data.add(a12)
 
-        list.layoutManager=LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
-        var adaptt=month_adapter(data)
-        list.adapter=adaptt
+        list.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        var adaptt = month_adapter(data)
+        list.adapter = adaptt
 
         adaptt.onItemClick = {
-            val intent = Intent(this,fragment::class.java)
+            val intent = Intent(this, fragment::class.java)
             intent.putExtra("opmonth", it)
             startActivity(intent)
         }

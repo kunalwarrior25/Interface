@@ -9,8 +9,9 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Testingop"
+
         tools:targetApi="31">
         <activity
             android:name=".fragment"
