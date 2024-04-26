@@ -22,11 +22,10 @@ class fragment : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fragment)
 
-        val month = intent.getParcelableExtra<month_modle>("opmonth")
-        if (month != null) {
-            val textView: TextView = findViewById(R.id.month_heading)
-            textView.text = month.month
-        }
+        val bundle:Bundle? = intent.extras
+        var text = findViewById<TextView>(R.id.month_heading)
+        var heading = bundle?.getString("opmonth")
+        text.text = heading
 
         frame_movie = findViewById(R.id.frame_movie)
         frame_show = findViewById(R.id.frame_show)

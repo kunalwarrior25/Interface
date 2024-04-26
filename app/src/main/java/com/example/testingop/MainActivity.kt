@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -16,59 +17,48 @@ import com.google.android.material.navigation.NavigationView
 class MainActivity : AppCompatActivity() {
     lateinit var list:RecyclerView
     lateinit var data:ArrayList<month_modle>
+    lateinit var monthId:Array<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         list = findViewById(R.id.month_list)
 
-        var b1 = "December"
-        var b2 = "November"
-        var b3 = "October"
-        var b4 = "September"
-        var b5 = "August"
-        var b6 = "July"
-        var b7 = "June"
-        var b8 = "May"
-        var b9 = "April"
-        var b10 = "March"
-        var b11 = "Febrary"
-        var b12 = "January"
+        monthId = arrayOf(
+            "December"
+            ,"November"
+            ,"October"
+            ,"September"
+            ,"August"
+            ,"July"
+            ,"June"
+            ,"May"
+            ,"April"
+            ,"March"
+            ,"Febrary"
+            ,"January")
 
-        data = ArrayList()
-        var a1 = month_modle("$b1")
-        var a2 = month_modle("$b2")
-        var a3 = month_modle("$b3")
-        var a4 = month_modle("$b4")
-        var a5 = month_modle("$b5")
-        var a6 = month_modle("$b6")
-        var a7 = month_modle("$b7")
-        var a8 = month_modle("$b8")
-        var a9 = month_modle("$b9")
-        var a10 = month_modle("$b10")
-        var a11 = month_modle("$b11")
-        var a12 = month_modle("$b12")
+        list.layoutManager = LinearLayoutManager(this)
+        list.setHasFixedSize(true)
+        data = arrayListOf<month_modle>()
+        getdata()
 
-        data.add(a1)
-        data.add(a2)
-        data.add(a3)
-        data.add(a4)
-        data.add(a5)
-        data.add(a6)
-        data.add(a7)
-        data.add(a8)
-        data.add(a9)
-        data.add(a10)
-        data.add(a11)
-        data.add(a12)
+    }
 
-        list.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        var adaptt = month_adapter(data)
-        list.adapter = adaptt
+    private fun getdata() {
 
-        adaptt.onItemClick = {
-            val intent = Intent(this, fragment::class.java)
-            intent.putExtra("opmonth", it)
-            startActivity(intent)
+        for(i in monthId.indices){
+            val month = month_modle(monthId[i])
+            data.add(month)
         }
+        var monthAdapt = month_adapter(data)
+        list.adapter=monthAdapt
+        monthAdapt.setOnItemClickListener(object :month_adapter.onItemClickListener{
+            override fun onItemCLick(position: Int) {
+                var intent = Intent(this@MainActivity,fragment::class.java)
+                intent.putExtra("opmonth",data[position].month)
+                startActivity(intent)
+            }
+
+        })
     }
 }
